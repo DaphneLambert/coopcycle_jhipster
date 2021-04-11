@@ -1,0 +1,52 @@
+{
+  "name": "Panier",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required", "unique"],
+      "fieldValidateRulesMaxlength": "16"
+    },
+    {
+      "fieldName": "nbElements",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "produit",
+      "otherEntityRelationshipName": "carts",
+      "relationshipName": "content",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "compte",
+      "otherEntityRelationshipName": "carts",
+      "relationshipName": "compte"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "carts",
+      "relationshipName": "restaurant"
+    }
+  ],
+  "entityTableName": "panier",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411162012"
+}

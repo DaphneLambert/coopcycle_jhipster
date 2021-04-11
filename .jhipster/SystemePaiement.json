@@ -1,0 +1,29 @@
+{
+  "name": "SystemePaiement",
+  "fields": [
+    {
+      "fieldName": "method",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "compte",
+      "otherEntityRelationshipName": "operations",
+      "relationshipName": "agents",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "systeme_paiement",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411162015"
+}

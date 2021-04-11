@@ -1,0 +1,143 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-compte-heading" data-cy="CompteCreateUpdateHeading" jhiTranslate="myblogApp.compte.home.createOrEditLabel">
+        Create or edit a Compte
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.compte.id" for="field_id">Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="id"
+            id="field_id"
+            data-cy="id"
+            formControlName="id"
+            [readonly]="editForm.get('id')!.value != null"
+          />
+          <div *ngIf="editForm.get('id')!.invalid && (editForm.get('id')!.dirty || editForm.get('id')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('id')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('id')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 16 }"
+            >
+              This field cannot be longer than 16 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.compte.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.compte.surname" for="field_surname">Surname</label>
+          <input type="text" class="form-control" name="surname" id="field_surname" data-cy="surname" formControlName="surname" />
+          <div *ngIf="editForm.get('surname')!.invalid && (editForm.get('surname')!.dirty || editForm.get('surname')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('surname')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.compte.age" for="field_age">Age</label>
+          <input type="number" class="form-control" name="age" id="field_age" data-cy="age" formControlName="age" />
+          <div *ngIf="editForm.get('age')!.invalid && (editForm.get('age')!.dirty || editForm.get('age')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('age')?.errors?.min"
+              jhiTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('age')?.errors?.max"
+              jhiTranslate="entity.validation.max"
+              [translateValues]="{ max: 120 }"
+            >
+              This field cannot be more than 120.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('age')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.compte.adress" for="field_adress">Adress</label>
+          <input type="text" class="form-control" name="adress" id="field_adress" data-cy="adress" formControlName="adress" />
+          <div *ngIf="editForm.get('adress')!.invalid && (editForm.get('adress')!.dirty || editForm.get('adress')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('adress')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.compte.roles" for="field_roles">Roles</label>
+          <select class="form-control" id="field_roles" data-cy="roles" name="roles" formControlName="roles">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="rolesOption.id === editForm.get('roles')!.value?.id ? editForm.get('roles')!.value : rolesOption"
+              *ngFor="let rolesOption of rolesSharedCollection; trackBy: trackRolesById"
+            >
+              {{ rolesOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.compte.cooperative" for="field_cooperative">Cooperative</label>
+          <select class="form-control" id="field_cooperative" data-cy="cooperative" name="cooperative" formControlName="cooperative">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                cooperativeOption.id === editForm.get('cooperative')!.value?.id ? editForm.get('cooperative')!.value : cooperativeOption
+              "
+              *ngFor="let cooperativeOption of cooperativesSharedCollection; trackBy: trackCooperativeById"
+            >
+              {{ cooperativeOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+{
+  "myblogApp": {
+    "compte": {
+      "home": {
+        "title": "Comptes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Compte",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Compte",
+        "notFound": "No Comptes found"
+      },
+      "created": "Նոր Compte ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Compte թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Compte հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Compte {{ id }}?"
+      },
+      "detail": {
+        "title": "Compte"
+      },
+      "id": "Id",
+      "name": "Name",
+      "surname": "Surname",
+      "age": "Age",
+      "adress": "Adress",
+      "carts": "Carts",
+      "roles": "Roles",
+      "owns": "Owns",
+      "cooperative": "Cooperative",
+      "operations": "Operations",
+      "courses": "Courses"
+    }
+  }
+}

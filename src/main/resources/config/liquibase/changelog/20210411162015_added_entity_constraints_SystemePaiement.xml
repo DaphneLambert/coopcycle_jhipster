@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity SystemePaiement.
+    -->
+    <changeSet id="20210411162015-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="systeme_paiement_id"
+                                 baseTableName="rel_systeme_paiement__agents"
+                                 constraintName="fk_rel_systeme_paiement__agents__systeme_paiement_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="systeme_paiement"/>
+
+        <addForeignKeyConstraint baseColumnNames="agents_id"
+                                 baseTableName="rel_systeme_paiement__agents"
+                                 constraintName="fk_rel_systeme_paiement__agents__agents_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="compte"/>
+    </changeSet>
+</databaseChangeLog>

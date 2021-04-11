@@ -1,0 +1,40 @@
+{
+  "name": "Cooperative",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required", "unique"],
+      "fieldValidateRulesMaxlength": "16"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "cooperative",
+      "relationshipName": "possessions"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "compte",
+      "otherEntityRelationshipName": "cooperative",
+      "relationshipName": "members"
+    }
+  ],
+  "entityTableName": "cooperative",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411162016"
+}

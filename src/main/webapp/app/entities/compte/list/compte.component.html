@@ -1,0 +1,86 @@
+<div>
+  <h2 id="page-heading" data-cy="CompteHeading">
+    <span jhiTranslate="myblogApp.compte.home.title">Comptes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="myblogApp.compte.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-compte"
+        [routerLink]="['/compte/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="myblogApp.compte.home.createLabel"> Create a new Compte </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="comptes?.length === 0">
+    <span jhiTranslate="myblogApp.compte.home.notFound">No comptes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="comptes && comptes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="myblogApp.compte.id">Id</span></th>
+          <th scope="col"><span jhiTranslate="myblogApp.compte.name">Name</span></th>
+          <th scope="col"><span jhiTranslate="myblogApp.compte.surname">Surname</span></th>
+          <th scope="col"><span jhiTranslate="myblogApp.compte.age">Age</span></th>
+          <th scope="col"><span jhiTranslate="myblogApp.compte.adress">Adress</span></th>
+          <th scope="col"><span jhiTranslate="myblogApp.compte.roles">Roles</span></th>
+          <th scope="col"><span jhiTranslate="myblogApp.compte.cooperative">Cooperative</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let compte of comptes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/compte', compte.id, 'view']">{{ compte.id }}</a>
+          </td>
+          <td>{{ compte.name }}</td>
+          <td>{{ compte.surname }}</td>
+          <td>{{ compte.age }}</td>
+          <td>{{ compte.adress }}</td>
+          <td>
+            <div *ngIf="compte.roles">
+              <a [routerLink]="['/roles', compte.roles?.id, 'view']">{{ compte.roles?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="compte.cooperative">
+              <a [routerLink]="['/cooperative', compte.cooperative?.id, 'view']">{{ compte.cooperative?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/compte', compte.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/compte', compte.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(compte)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

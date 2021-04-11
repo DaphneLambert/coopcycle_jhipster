@@ -1,0 +1,24 @@
+{
+  "myblogApp": {
+    "roles": {
+      "home": {
+        "title": "Roles",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Roles",
+        "createOrEditLabel": "Создать или отредактировать Roles",
+        "notFound": "Roles не найдено"
+      },
+      "created": "Новый Roles создан с идентификатором {{ param }}",
+      "updated": "Roles обновлен с идентификатором {{ param }}",
+      "deleted": "Roles удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Roles {{ id }}?"
+      },
+      "detail": {
+        "title": "Roles"
+      },
+      "id": "ID",
+      "role": "Role"
+    }
+  }
+}

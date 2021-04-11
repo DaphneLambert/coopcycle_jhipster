@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="restaurant">
+      <h2 data-cy="restaurantDetailsHeading"><span jhiTranslate="myblogApp.restaurant.detail.title">Restaurant</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="myblogApp.restaurant.id">Id</span></dt>
+        <dd>
+          <span>{{ restaurant.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.restaurant.name">Name</span></dt>
+        <dd>
+          <span>{{ restaurant.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.restaurant.adress">Adress</span></dt>
+        <dd>
+          <span>{{ restaurant.adress }}</span>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.restaurant.owned">Owned</span></dt>
+        <dd>
+          <div *ngIf="restaurant.owned">
+            <a [routerLink]="['/compte', restaurant.owned?.id, 'view']">{{ restaurant.owned?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.restaurant.cooperative">Cooperative</span></dt>
+        <dd>
+          <div *ngIf="restaurant.cooperative">
+            <a [routerLink]="['/cooperative', restaurant.cooperative?.id, 'view']">{{ restaurant.cooperative?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/restaurant', restaurant.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

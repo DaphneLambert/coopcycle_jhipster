@@ -1,0 +1,64 @@
+{
+  "name": "Restaurant",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required", "unique"],
+      "fieldValidateRulesMaxlength": "16"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "adress",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "compte",
+      "otherEntityRelationshipName": "owns",
+      "relationshipName": "owned",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "produit",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "products"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "course",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "orders"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "panier",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "carts"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cooperative",
+      "otherEntityRelationshipName": "possessions",
+      "relationshipName": "cooperative"
+    }
+  ],
+  "entityTableName": "restaurant",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411162013"
+}

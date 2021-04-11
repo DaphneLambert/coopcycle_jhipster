@@ -1,0 +1,25 @@
+{
+  "myblogApp": {
+    "systemePaiement": {
+      "home": {
+        "title": "Systeme Paiements",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Systeme Paiement အသစ်ထည့်မည်",
+        "createOrEditLabel": "Systeme Paiement အသစ်ထည့်ခြင်း (သို့) ပြုပြင်ခြင်း",
+        "notFound": "No Systeme Paiements found"
+      },
+      "created": "{{ param }} အိုင်ဒီဖြင့် Systeme Paiement အသစ်တစ်ခုအား ထည့်ပြီးပါပြီ။",
+      "updated": "{{ param }} အိုင်ဒီဖြင့် Systeme Paiement တစ်ခုအား ပြုပြင်ပြီးပါပြီ။",
+      "deleted": "{{ param }} အိုင်ဒီဖြင့် Systeme Paiement တစ်ခုအား ဖျက်ပြီးပါပြီ။",
+      "delete": {
+        "question": "Systeme Paiement {{ id }} အား ဖျက်ပါမည်။ သေချာပါသလား?"
+      },
+      "detail": {
+        "title": "Systeme Paiement"
+      },
+      "id": "ID",
+      "method": "Method",
+      "agents": "Agents"
+    }
+  }
+}

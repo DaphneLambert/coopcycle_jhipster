@@ -1,0 +1,84 @@
+{
+  "name": "Compte",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required", "unique"],
+      "fieldValidateRulesMaxlength": "16"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "surname",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "age",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMin": "0",
+      "fieldValidateRulesMax": "120"
+    },
+    {
+      "fieldName": "adress",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "panier",
+      "otherEntityRelationshipName": "compte",
+      "relationshipName": "carts"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "roles",
+      "otherEntityRelationshipName": "compte",
+      "relationshipName": "roles"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "owned",
+      "relationshipName": "owns",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cooperative",
+      "otherEntityRelationshipName": "members",
+      "relationshipName": "cooperative"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "systemePaiement",
+      "otherEntityRelationshipName": "agents",
+      "relationshipName": "operations",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "course",
+      "otherEntityRelationshipName": "agents",
+      "relationshipName": "courses",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "compte",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411162010"
+}

@@ -1,0 +1,25 @@
+{
+  "myblogApp": {
+    "systemePaiement": {
+      "home": {
+        "title": "Systeme Paiements",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Systeme Paiement",
+        "createOrEditLabel": "创建或编辑 Systeme Paiement",
+        "notFound": "No Systeme Paiements found"
+      },
+      "created": "Systeme Paiement {{ param }} 创建成功",
+      "updated": "Systeme Paiement {{ param }} 更新成功",
+      "deleted": "Systeme Paiement {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Systeme Paiement {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Systeme Paiement"
+      },
+      "id": "ID",
+      "method": "Method",
+      "agents": "Agents"
+    }
+  }
+}

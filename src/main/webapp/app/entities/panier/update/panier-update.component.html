@@ -1,0 +1,136 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-panier-heading" data-cy="PanierCreateUpdateHeading" jhiTranslate="myblogApp.panier.home.createOrEditLabel">
+        Create or edit a Panier
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.panier.id" for="field_id">Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="id"
+            id="field_id"
+            data-cy="id"
+            formControlName="id"
+            [readonly]="editForm.get('id')!.value != null"
+          />
+          <div *ngIf="editForm.get('id')!.invalid && (editForm.get('id')!.dirty || editForm.get('id')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('id')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('id')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 16 }"
+            >
+              This field cannot be longer than 16 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.panier.nbElements" for="field_nbElements">Nb Elements</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nbElements"
+            id="field_nbElements"
+            data-cy="nbElements"
+            formControlName="nbElements"
+          />
+          <div *ngIf="editForm.get('nbElements')!.invalid && (editForm.get('nbElements')!.dirty || editForm.get('nbElements')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nbElements')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('nbElements')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.panier.price" for="field_price">Price</label>
+          <input type="number" class="form-control" name="price" id="field_price" data-cy="price" formControlName="price" />
+          <div *ngIf="editForm.get('price')!.invalid && (editForm.get('price')!.dirty || editForm.get('price')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('price')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('price')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="myblogApp.panier.content" for="field_contents">Content</label>
+          <select class="form-control" id="field_contents" data-cy="content" multiple name="contents" formControlName="contents">
+            <option
+              [ngValue]="getSelectedProduit(produitOption, editForm.get('contents')!.value)"
+              *ngFor="let produitOption of produitsSharedCollection; trackBy: trackProduitById"
+            >
+              {{ produitOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.panier.compte" for="field_compte">Compte</label>
+          <select class="form-control" id="field_compte" data-cy="compte" name="compte" formControlName="compte">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="compteOption.id === editForm.get('compte')!.value?.id ? editForm.get('compte')!.value : compteOption"
+              *ngFor="let compteOption of comptesSharedCollection; trackBy: trackCompteById"
+            >
+              {{ compteOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.panier.restaurant" for="field_restaurant">Restaurant</label>
+          <select class="form-control" id="field_restaurant" data-cy="restaurant" name="restaurant" formControlName="restaurant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                restaurantOption.id === editForm.get('restaurant')!.value?.id ? editForm.get('restaurant')!.value : restaurantOption
+              "
+              *ngFor="let restaurantOption of restaurantsSharedCollection; trackBy: trackRestaurantById"
+            >
+              {{ restaurantOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

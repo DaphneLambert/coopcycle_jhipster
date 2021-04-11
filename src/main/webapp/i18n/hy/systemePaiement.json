@@ -1,0 +1,25 @@
+{
+  "myblogApp": {
+    "systemePaiement": {
+      "home": {
+        "title": "Systeme Paiements",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Systeme Paiement",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Systeme Paiement",
+        "notFound": "No Systeme Paiements found"
+      },
+      "created": "Նոր Systeme Paiement ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Systeme Paiement թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Systeme Paiement հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Systeme Paiement {{ id }}?"
+      },
+      "detail": {
+        "title": "Systeme Paiement"
+      },
+      "id": "ID",
+      "method": "Method",
+      "agents": "Agents"
+    }
+  }
+}

@@ -41,6 +41,8 @@
     "jwtSecretKey": "ZGU0MDBjMjgzMzFkZTU4NzQ2YTBjM2Y4MDg2ZWQ2MTI1ODQzMGIxYzRmZTIyYzgzZGM0MWQzMjViNjQwYzRiZGYwNmU2ODA0MmQ3NmMwOWNmMjg4Y2RiMGQ1MWMxZGQ0MThmNTRiZWM3NzY5Y2RiMzY3NmY0OTg1NzBiMDQ2NGQ=",
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
-    "languages": ["fr", "hy", "bg", "zh-cn", "en", "my", "ru"]
+    "languages": ["fr", "hy", "bg", "zh-cn", "en", "my", "ru"],
+    "entities": ["Roles", "Compte", "Produit", "Panier", "Restaurant", "Course", "SystemePaiement", "Cooperative"],
+    "lastLiquibaseTimestamp": 1618158016000
   }
 }

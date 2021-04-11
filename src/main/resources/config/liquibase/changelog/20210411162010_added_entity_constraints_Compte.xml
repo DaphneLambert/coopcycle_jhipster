@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Compte.
+    -->
+    <changeSet id="20210411162010-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="roles_id"
+                                 baseTableName="compte"
+                                 constraintName="fk_compte__roles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="roles"/>
+
+        <addForeignKeyConstraint baseColumnNames="cooperative_id"
+                                 baseTableName="compte"
+                                 constraintName="fk_compte__cooperative_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cooperative"/>
+    </changeSet>
+</databaseChangeLog>

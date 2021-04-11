@@ -1,0 +1,22 @@
+{
+  "name": "Roles",
+  "fields": [
+    {
+      "fieldName": "role",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "required", "unique"],
+      "fieldValidateRulesMinlength": "1"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "roles",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411162009"
+}

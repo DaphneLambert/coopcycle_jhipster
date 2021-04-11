@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="course">
+      <h2 data-cy="courseDetailsHeading"><span jhiTranslate="myblogApp.course.detail.title">Course</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="myblogApp.course.id">Id</span></dt>
+        <dd>
+          <span>{{ course.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.course.timeRequired">Time Required</span></dt>
+        <dd>
+          <span>{{ course.timeRequired }}</span>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.course.order">Order</span></dt>
+        <dd>
+          <div *ngIf="course.order">
+            <a [routerLink]="['/panier', course.order?.id, 'view']">{{ course.order?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.course.agents">Agents</span></dt>
+        <dd>
+          <span *ngFor="let agents of course.agents; let last = last">
+            <a [routerLink]="['/compte', agents?.id, 'view']">{{ agents.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="myblogApp.course.restaurant">Restaurant</span></dt>
+        <dd>
+          <div *ngIf="course.restaurant">
+            <a [routerLink]="['/restaurant', course.restaurant?.id, 'view']">{{ course.restaurant?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/course', course.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

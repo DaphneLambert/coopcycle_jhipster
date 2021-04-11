@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-systeme-paiement-heading"
+        data-cy="SystemePaiementCreateUpdateHeading"
+        jhiTranslate="myblogApp.systemePaiement.home.createOrEditLabel"
+      >
+        Create or edit a Systeme Paiement
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myblogApp.systemePaiement.method" for="field_method">Method</label>
+          <input type="text" class="form-control" name="method" id="field_method" data-cy="method" formControlName="method" />
+          <div *ngIf="editForm.get('method')!.invalid && (editForm.get('method')!.dirty || editForm.get('method')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('method')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="myblogApp.systemePaiement.agents" for="field_agents">Agents</label>
+          <select class="form-control" id="field_agents" data-cy="agents" multiple name="agents" formControlName="agents">
+            <option
+              [ngValue]="getSelectedCompte(compteOption, editForm.get('agents')!.value)"
+              *ngFor="let compteOption of comptesSharedCollection; trackBy: trackCompteById"
+            >
+              {{ compteOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

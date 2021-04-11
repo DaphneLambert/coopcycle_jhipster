@@ -48,6 +48,26 @@ public class CacheConfiguration {
             createCache(cm, fr.polytech.info4.domain.User.class.getName());
             createCache(cm, fr.polytech.info4.domain.Authority.class.getName());
             createCache(cm, fr.polytech.info4.domain.User.class.getName() + ".authorities");
+            createCache(cm, fr.polytech.info4.domain.Roles.class.getName());
+            createCache(cm, fr.polytech.info4.domain.Compte.class.getName());
+            createCache(cm, fr.polytech.info4.domain.Compte.class.getName() + ".carts");
+            createCache(cm, fr.polytech.info4.domain.Compte.class.getName() + ".operations");
+            createCache(cm, fr.polytech.info4.domain.Compte.class.getName() + ".courses");
+            createCache(cm, fr.polytech.info4.domain.Produit.class.getName());
+            createCache(cm, fr.polytech.info4.domain.Produit.class.getName() + ".carts");
+            createCache(cm, fr.polytech.info4.domain.Panier.class.getName());
+            createCache(cm, fr.polytech.info4.domain.Panier.class.getName() + ".contents");
+            createCache(cm, fr.polytech.info4.domain.Restaurant.class.getName());
+            createCache(cm, fr.polytech.info4.domain.Restaurant.class.getName() + ".products");
+            createCache(cm, fr.polytech.info4.domain.Restaurant.class.getName() + ".orders");
+            createCache(cm, fr.polytech.info4.domain.Restaurant.class.getName() + ".carts");
+            createCache(cm, fr.polytech.info4.domain.Course.class.getName());
+            createCache(cm, fr.polytech.info4.domain.Course.class.getName() + ".agents");
+            createCache(cm, fr.polytech.info4.domain.SystemePaiement.class.getName());
+            createCache(cm, fr.polytech.info4.domain.SystemePaiement.class.getName() + ".agents");
+            createCache(cm, fr.polytech.info4.domain.Cooperative.class.getName());
+            createCache(cm, fr.polytech.info4.domain.Cooperative.class.getName() + ".possessions");
+            createCache(cm, fr.polytech.info4.domain.Cooperative.class.getName() + ".members");
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,72 @@
+entity Roles {
+   role String minlength(1) required unique
+}
+ 
+entity Compte {
+   id String maxlength(16) required unique
+   name String required
+   surname String required
+   age Integer min(0) max(120)
+   adress String required
+}
+ 
+entity Produit {
+   id String maxlength(16) required unique
+   name String required
+   price Integer min(0) required
+   quantity Integer min(0) required
+}
+
+
+entity Panier {
+   id String maxlength(16) required unique
+   nbElements Integer required
+   price Integer required
+}
+ 
+entity Restaurant {
+   id String maxlength(16) required unique
+   name String required
+   adress String required
+}
+ 
+entity Course {
+   id String maxlength(16) required unique
+   timeRequired Integer required
+}
+ 
+entity SystemePaiement {
+   method String required
+}
+ 
+entity Cooperative {
+   id String maxlength(16) required unique
+   name String required
+}
+ 
+relationship OneToOne {
+   Course{order} to Panier
+   Restaurant{owned} to Compte{owns}
+}
+ 
+relationship ManyToOne {
+   Compte{roles} to Roles
+}
+ 
+relationship OneToMany {
+   Restaurant{products} to Produit
+   Restaurant{orders} to Course
+   Compte{carts} to Panier
+ 
+   Cooperative{possessions} to Restaurant
+   Cooperative{members} to Compte
+ 
+   Restaurant{carts} to Panier
+}
+ 
+relationship ManyToMany {
+   Panier{content} to Produit{carts}
+   SystemePaiement{agents} to Compte{operations}
+   Course{agents} to Compte{courses}
+}
+

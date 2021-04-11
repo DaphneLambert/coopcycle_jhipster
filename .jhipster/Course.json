@@ -1,0 +1,48 @@
+{
+  "name": "Course",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required", "unique"],
+      "fieldValidateRulesMaxlength": "16"
+    },
+    {
+      "fieldName": "timeRequired",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "panier",
+      "otherEntityRelationshipName": "course",
+      "relationshipName": "order",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "compte",
+      "otherEntityRelationshipName": "courses",
+      "relationshipName": "agents",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "restaurant"
+    }
+  ],
+  "entityTableName": "course",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411162014"
+}

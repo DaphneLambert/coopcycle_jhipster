@@ -1,0 +1,25 @@
+{
+  "myblogApp": {
+    "systemePaiement": {
+      "home": {
+        "title": "SystemePaiements",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Systeme Paiement",
+        "createOrEditLabel": "Créer ou éditer un Systeme Paiement",
+        "notFound": "Aucun Systeme Paiement trouvé"
+      },
+      "created": "Un nouveau Systeme Paiement a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Systeme Paiement avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Systeme Paiement avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Systeme Paiement {{ id }} ?"
+      },
+      "detail": {
+        "title": "Systeme Paiement"
+      },
+      "id": "ID",
+      "method": "Method",
+      "agents": "Agents"
+    }
+  }
+}
